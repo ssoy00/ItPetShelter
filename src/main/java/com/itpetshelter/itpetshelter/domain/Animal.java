@@ -22,7 +22,7 @@ public class Animal {
 
     @OneToOne
     @JoinColumn(name = "Sno")
-    private Shelter shelter;
+    private com.itpetshelter.itpetshelter.domain.Shelter shelter;
 
     @OneToOne
     @JoinColumn(name = "Mno")

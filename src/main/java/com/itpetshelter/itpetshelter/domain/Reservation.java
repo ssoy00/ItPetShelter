@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
         @Index(name = "idx_Reservation_Animal_Ano", columnList = "Animal_Ano")
 })
 @Entity
-public class Reservation extends BaseEntity{
+public class Reservation extends com.itpetshelter.itpetshelter.domain.BaseEntity {
     @Id
     private int Rno;
 
@@ -24,7 +24,7 @@ public class Reservation extends BaseEntity{
 
     @OneToOne
     @JoinColumn(name = "Ano")
-    private Animal animal;
+    private com.itpetshelter.itpetshelter.domain.Animal animal;
 
     @OneToOne
     @JoinColumn(name = "Uid")
@@ -32,7 +32,7 @@ public class Reservation extends BaseEntity{
 
     @OneToOne
     @JoinColumn(name = "Sno")
-    private Shelter shelter;
+    private com.itpetshelter.itpetshelter.domain.Shelter shelter;
 
     private LocalDateTime Date;
     private LocalDateTime Time;
