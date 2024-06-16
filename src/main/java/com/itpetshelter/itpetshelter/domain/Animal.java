@@ -1,4 +1,4 @@
-package com.itpetshelter.itpetshelter.Domain;
+package com.itpetshelter.itpetshelter.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -22,7 +22,7 @@ public class Animal {
 
     @OneToOne
     @JoinColumn(name = "Sno")
-    private Shelter shelter;
+    private com.itpetshelter.itpetshelter.domain.Shelter shelter;
 
     @OneToOne
     @JoinColumn(name = "Mno")

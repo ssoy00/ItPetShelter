@@ -1,4 +1,4 @@
-package com.itpetshelter.itpetshelter.Domain;
+package com.itpetshelter.itpetshelter.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
