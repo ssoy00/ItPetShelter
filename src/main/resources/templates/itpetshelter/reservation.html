@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/base.html}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Create Reservation</title>
+</head>
+<body>
+<div layout:fragment="content" id="reservation-form">
+<h1>방문 입양 문의</h1>
+    <form th:action="@{/itpetshelter/reservations}" th:object="${reservation}" method="post">
+        <label for="date">예약 날짜:</label>
+        <input type="date" id="date" th:field="*{date}" required/>
+        <br/>
+
+        <label for="time">예약 시간:</label>
+        <input type="time" id="time" th:field="*{time}" required/>
+        <br/>
+
+        <label for="animal">동물:</label>
+        <select id="animal" th:field="*{animal}">
+            <option th:each="animal : ${animals}" th:value="${animal.ano}" th:text="${animal.aname}">아이 이름</option>
+        </select>
+        <br/>
+
+        <label for="shelter">보호소:</label>
+        <select id="shelter" th:field="*{shelter}">
+            <option th:each="shelter : ${shelters}" th:value="${shelter.sno}" th:text="${shelter.sname}">보호소 위치</option>
+        </select>
+        <br/>
+
+        <button type="submit">예약 생성</button>
+    </form>
+</div>
+</body>
+</html>
