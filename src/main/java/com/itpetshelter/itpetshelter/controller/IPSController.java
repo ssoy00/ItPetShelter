@@ -11,9 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Log4j2
 @RequiredArgsConstructor
 public class IPSController {
-    @GetMapping("/base")
-    public String base() {
-        return "layout/base";
+    @GetMapping("/index")
+    public void index() {
     }
 
 }
