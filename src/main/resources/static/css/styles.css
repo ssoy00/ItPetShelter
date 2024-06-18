@@ -7960,7 +7960,7 @@ textarea.form-control-lg {
 
 .bg-light {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+  background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity)) !important;
 }
 
 .bg-dark {
@@ -10901,5 +10901,8 @@ header.masthead .post-heading .meta a {
     flex-direction: column;
     margin-top: 30px;
   }
-
+  .dropdown-menu-dog{
+    display: block;
+    list-style-type: none;
+  }
 }
