@@ -2,13 +2,16 @@ package com.itpetshelter.itpetshelter.controller;
 
 
 import com.itpetshelter.itpetshelter.dto.BoardDTO;
-import com.itpetshelter.itpetshelter.dto.BoardListReplyCountDTO;
+import com.itpetshelter.itpetshelter.dto.BoardListAllDTO;
 import com.itpetshelter.itpetshelter.dto.PageRequestDTO;
 import com.itpetshelter.itpetshelter.dto.PageResponseDTO;
 import com.itpetshelter.itpetshelter.service.BoardService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,22 +20,31 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.File;
+import java.nio.file.Files;
+import java.util.List;
+
 // 화면, 데이터 같이 전달.
 @Controller
 @RequestMapping("/board")
 @Log4j2
 @RequiredArgsConstructor
 public class BoardController {
+    // c 드라이브에 업로드가 된 위치 경로
+    @Value("${com.busanit501.upload.path}")
+    private String uploadPath;
+
     private final BoardService boardService;
-//깃 테스트2
+    //깃 테스트2
     // ex) /board/list
     @GetMapping("/list")
     public void list(PageRequestDTO pageRequestDTO, Model model) {
 
         log.info("BoardController : /board/list  확인 중, pageRequestDTO : " + pageRequestDTO);
 
-        PageResponseDTO<BoardListReplyCountDTO> responseDTO
-                = boardService.listWithReplyCount(pageRequestDTO);
+        // dto 변경하기, 메서드도 변경하기. 댓글 갯수 포함, 첨부 이미지들 모두 포함.
+        PageResponseDTO<BoardListAllDTO> responseDTO
+                = boardService.listWithAll(pageRequestDTO);
         // 서버로부터 응답확인.
         log.info("BoardController 확인 중, responseDTO : " + responseDTO);
         // 서버 -> 화면 데이터 전달.
@@ -46,6 +58,8 @@ public class BoardController {
     }
 
     //글쓰기 처리
+    // 로그인한 유저이고, 일반 유저, 글쓰기가 가능하게끔 설정.
+//    @PreAuthorize("hasRole('USER')")
     @PostMapping("/register")
     public String register(@Valid BoardDTO boardDTO
             , BindingResult bindingResult
@@ -94,7 +108,7 @@ public class BoardController {
             , BindingResult bindingResult
             , RedirectAttributes redirectAttributes
             , Model model
-    ,PageRequestDTO pageRequestDTO) {
+            ,PageRequestDTO pageRequestDTO) {
         // 입력중 유효성 체크에 해당 될 때
         if(bindingResult.hasErrors()) {
             log.info("update 중 오류 발생.");
@@ -121,19 +135,52 @@ public class BoardController {
 
     //글삭제 처리
     @PostMapping("/delete")
-    public String delete(PageRequestDTO pageRequestDTO, Long bno, RedirectAttributes redirectAttributes
-            ) {
+    public String delete(BoardDTO boardDTO, PageRequestDTO pageRequestDTO, Long bno, RedirectAttributes redirectAttributes
+    ) {
 
 
         //화면 -> 서버 -> 서비스 -> 레포지토리 -> 디비, 입력후, 게시글 번호 가져오기
         //화면 <- 서버 <- 서비스 <- 레포지토리 <- 디비
-        boardService.delete(bno);
+        // 데이터베이스에서 , 댓글, 첨부된 이미지들도 다 삭제
+        boardService.deleteAll(bno);
+        log.info("delete : boardDTO 확인 : " + boardDTO);
+        // 미디어서버,  , 파일들도 다 같이 삭제.
+        List<String> fileNames = boardDTO.getFileNames();
+        if(fileNames != null && fileNames.size()>0) {
+            removeFiles(fileNames);
+        }
 
         // 글쓰기 후, 작성된 게시글 번호 -> 화면 , 임시로 전달.(1회용)
         redirectAttributes.addFlashAttribute("result",bno);
         redirectAttributes.addFlashAttribute("resultType","delete");
         return "redirect:/board/list?"+pageRequestDTO.getLink2();
 
+    }
+
+    public void removeFiles(List<String> files) {
+        for (String fileName : files) {
+            Resource resource = new FileSystemResource(
+                    uploadPath+ File.separator+fileName);
+            String resourceName = resource.getFilename();
+            // 결과 알려줄 임시 맵
+//            Map<String,Boolean> resultMap = new HashMap<>();
+            boolean deleteCheck = false;
+            try {
+                // 원본 파일 삭제
+                // contentType , 섬네일 삭제시 이용할 예정.
+                String contentType = Files.probeContentType(resource.getFile().toPath());
+                deleteCheck = resource.getFile().delete();
+                if(contentType.startsWith("image")){
+                    File thumbnailFile = new File(uploadPath+File.separator
+                            +"s_"+fileName);
+                    thumbnailFile.delete();
+                }
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
+//            resultMap.put("result",deleteCheck);
+//            return resultMap;
+        }
     }
 
 

@@ -11,7 +11,7 @@
     </style>
 </head>
 <body>
-<div layout:fragment="content">
+  <div layout:fragment="content">
     <div class="row">
         <!--    NavBar 가져와서 적용해보기-->
         <div class="col">
@@ -19,7 +19,8 @@
                 <!--      <nav class="navbar bg-primary navbar-expand-lg bg-body-tertiary bg-primary"  data-bs-theme="" >-->
                 <!--      <nav class="navbar bg-primary" data-bs-theme="dark">-->
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="/board/list" style="font-family: 'Jua', sans-serif; font-weight: bold; letter-spacing: 0.5px;">목록가기</a>
+                    <a class="navbar-brand" href="/board/list"
+                       style="font-family: 'Jua', sans-serif; font-weight: bold; letter-spacing: 0.5px;">목록가기</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarTogglerDemo02"
                             aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,13 +29,8 @@
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/board/register" style="font-family: 'Jua', sans-serif; font-weight: bold; letter-spacing: 0.5px;">글작성</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Link</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                                <a class="nav-link active" aria-current="page" href="/board/register"
+                                   style="font-family: 'Jua', sans-serif; font-weight: bold; letter-spacing: 0.5px;">글작성</a>
                             </li>
                         </ul>
                     </div>
@@ -93,6 +89,16 @@
                     </form>
 
                 </div>
+                <button class="btn btn-info addReplyBtn2">댓글 작성2</button>
+                <!--                첨부 이미지 표시하기, 원본 이미지 -->
+                <div class="col">
+                    <div class="card" th:if="${boardDTO.fileNames != null && boardDTO.fileNames.size()>0}">
+                        <img class="card-img-top" th:each="fileName: ${boardDTO.fileNames}"
+                             th:src="|/view/${fileName}|">
+
+                    </div>
+                </div>
+                <!--                첨부 이미지 표시하기, 원본 이미지 -->
             </div>
         </div>
         <!--        div row-->
@@ -101,8 +107,8 @@
     <div class="row content mt-3">
         <div class="col">
             <div>
-                <button class="btn btn-info addReplyBtn">댓글 작성</button>
-                <ul class="list-group replyList mt-3">
+<!--                <button class="btn btn-info addReplyBtn">댓글 작성</button>-->
+<!--                <ul class="list-group replyList mt-3">-->
 
                 </ul>
             </div>
@@ -158,7 +164,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header ">
-<!--                    수정 또는 삭제 재사용-->
+                    <!--                    수정 또는 삭제 재사용-->
                     <h4 class="modal-title replyHeader"></h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -191,8 +197,6 @@
 <script layout:fragment="javascript" th:inline="javascript">
 
 
-
-
     // 모달 댓글 폼 표시하기=====================================================
     const registerModal = new bootstrap.Modal(document.querySelector(".registerModal"))
 
@@ -203,14 +207,19 @@
     const closeRegisterBtn = document.querySelector(".closeRegisterBtn")
 
     // 이벤트 처리하기.
-    document.querySelector(".addReplyBtn").addEventListener("click", function (e) {
+    // document.querySelector(".addReplyBtn").addEventListener("click", function (e) {
+    //     console.log("댓글 테스트")
+    //     registerModal.show()
+    // }, false)
+
+    //test
+    // 이벤트 처리하기.
+    document.querySelector(".addReplyBtn2").addEventListener("click", function (e) {
+        console.log("댓글 테스트2")
         registerModal.show()
     }, false)
 
     // 모달 댓글 폼 표시하기=====================================================
-
-
-
 
 
     const bno = [[${boardDTO.bno}]]
@@ -261,6 +270,7 @@
         } // if
         replyList.innerHTML = str
     }
+
     /////댓글 목록 , HTML 그리기/////////////////
 
     /////댓글 페이징, HTML 그리기/////////////////////////////////////
@@ -287,27 +297,28 @@
         // 위에서 만든 가상의 HTML 요소를 , 특정 요소에 주입하기.
         replyPaging.innerHTML = pageStr
     }
+
     /////댓글 페이징, HTML 그리기/////////////////////////////////////
 
     // 페이지 이동 이벤트 처리=====================================================
     let page = 1
     let size = 10
 
-    replyPaging.addEventListener("click",function (e){
+    replyPaging.addEventListener("click", function (e) {
         e.preventDefault()
         e.stopPropagation()
 
         const target = e.target
 
         // a 태그만 이벤트 처리 하겠다, 그외에는 넘어가기함.
-        if(!target || target.tagName != 'A'){
+        if (!target || target.tagName != 'A') {
             return
         }
         const pageNum = target.getAttribute("data-page")
         page = pageNum
-        printReplies(page,size)
+        printReplies(page, size)
 
-    },false)
+    }, false)
     // 페이지 이동 이벤트 처리=====================================================
 
     // 모달 댓글 수정폼 표시하기=====================================================
@@ -322,21 +333,21 @@
 
     // 이벤트 처리하기.
     // 댓글 목록에서 하나 댓글 선택시, 이벤트 처리
-    replyList.addEventListener("click", function (e){
+    replyList.addEventListener("click", function (e) {
         e.preventDefault()
         e.stopPropagation()
 
         const target = e.target
 
         // 목록요소를 선택시 span만 이벤트 처리 하겠다.
-        if(!target || target.tagName != 'SPAN' ){
+        if (!target || target.tagName != 'SPAN') {
             return
         }
         // span 태그에 있는 속성 data-rno 값 가져오기.
         const rno = target.getAttribute("data-rno")
 
         // span 태그 중에서, data-rno 요소가 있는 것만 처리하겠다.
-        if(!rno) {
+        if (!rno) {
             return;
         }
 
@@ -349,7 +360,7 @@
             alert("댓글 조회 실패")
         )
 
-    },false)
+    }, false)
     // 댓글 목록에서 하나 댓글 선택시, 이벤트 처리
     // 모달 댓글 수정폼 표시하기=====================================================
 
@@ -380,12 +391,11 @@
     // 댓글 작성 이벤트 처리===============================================
 
 
-
     // 댓글 수정 이벤트 처리===============================================
     document.querySelector(".updateBtn").addEventListener("click", function (e) {
         // registerModal.hide()
         const replyObj = {
-            bno:bno,
+            bno: bno,
             rno: replyHeader.innerHTML,
             replyText: updateText.value
         }
@@ -407,9 +417,9 @@
     // 댓글 수정 이벤트 처리===============================================
 
     // 댓글 수정 닫기 이벤트 처리===============================================
-    closeUpdateBtn.addEventListener("click",function (e){
+    closeUpdateBtn.addEventListener("click", function (e) {
         updateModal.hide()
-    },false)
+    }, false)
     // 댓글 수정 닫기 이벤트 처리===============================================
 
 
@@ -417,7 +427,7 @@
     //document.querySelector(".deleteBtn").addEventListener("click", function (e) {
     deleteBtn.addEventListener("click", function (e) {
 
-       const rno = replyHeader.innerHTML
+        const rno = replyHeader.innerHTML
         deleteReply(rno).then(result => {
             // 댓글 삭제 성공 후 처리
             alert(result.rno + "번 댓글 삭제 성공: ")
