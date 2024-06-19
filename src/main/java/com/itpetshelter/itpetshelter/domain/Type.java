@@ -11,6 +11,8 @@ import lombok.*;
 @Entity
 public class Type {
     @Id
-    private int Tno;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Tno;
+
     private String Atype;
 }

@@ -14,28 +14,35 @@ import java.time.LocalDateTime;
         @Index(name = "idx_Reservation_Animal_Ano", columnList = "Animal_Ano")
 })
 @Entity
+
 public class Reservation extends BaseEntity {
+
+
     @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int Rno;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "Mno")
     private Manager manager;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "Ano")
     private Animal animal;
 
-    @OneToOne
-    @JoinColumn(name = "Uid")
-    private User user;
+//    @OneToOne
+//    @JoinColumn(name = "Uid")
+//    private User user;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "Sno")
     private Shelter shelter;
 
     private LocalDateTime Date;
     private LocalDateTime Time;
-    private boolean R_check;
+
+
+    private Boolean Rcheck;
+
 }
 
