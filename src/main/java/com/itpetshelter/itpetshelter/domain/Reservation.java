@@ -14,7 +14,9 @@ import java.time.LocalDateTime;
         @Index(name = "idx_Reservation_Animal_Ano", columnList = "Animal_Ano")
 })
 @Entity
-public class Reservation extends com.itpetshelter.itpetshelter.domain.BaseEntity {
+
+public class Reservation extends BaseEntity {
+
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -38,6 +40,9 @@ public class Reservation extends com.itpetshelter.itpetshelter.domain.BaseEntity
 
     private LocalDateTime Date;
     private LocalDateTime Time;
+
+
     private Boolean Rcheck;
+
 }
 

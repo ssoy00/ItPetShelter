@@ -33,7 +33,10 @@ public class Animal {
 //    private Manager manager;
 
     private String Aname;
+
+
     private Long Aage;
     private Boolean Aneutered;  //중성화
     private Boolean Adisease;  //질병
+
 }
