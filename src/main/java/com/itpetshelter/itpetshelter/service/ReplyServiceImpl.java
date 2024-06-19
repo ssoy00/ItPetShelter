@@ -72,10 +72,7 @@ public class ReplyServiceImpl implements ReplyService {
     @Override
     public PageResponseDTO<ReplyDTO> getListOfBoard
             (Long bno, PageRequestDTO pageRequestDTO) {
-        //페이징 조건 정의하기.
-//      Pageable pageable = PageRequest.of(pageRequestDTO.getPage()-1 <=0 ? 0 :pageRequestDTO.getPage()-1,pageRequestDTO.getSize(), Sort.by("rno").descending());
-//        Pageable pageable = PageRequest.of(pageRequestDTO.getPage()-1 <=0 ? 0 :pageRequestDTO.getPage()-1, pageRequestDTO.getSize(),Sort.by("rno").descending());
-        //오름차순
+
         Pageable pageable = PageRequest.of(pageRequestDTO.getPage()-1 <=0 ? 0 :pageRequestDTO.getPage()-1, pageRequestDTO.getSize(),Sort.by("rno").ascending());
         Page<Reply> result = replyRepository.listOfBoard(bno,pageable);
 

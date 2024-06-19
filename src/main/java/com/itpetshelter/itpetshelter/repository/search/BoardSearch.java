@@ -18,9 +18,7 @@ public interface BoardSearch {
   );
 
   // 댓글, 첨부 이미지들도 같이 조회
-//  Page<BoardListReplyCountDTO> searchWithAll(
-//          String[] types, String keyword ,Pageable pageable
-//  );
+
 
   Page<BoardListAllDTO> searchWithAll(
           String[] types, String keyword ,Pageable pageable
