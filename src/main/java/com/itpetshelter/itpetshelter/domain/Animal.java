@@ -33,4 +33,5 @@ public class Animal {
     private boolean Aneutered;
     private boolean Adisease;
     private String Alocate;
+
 }
