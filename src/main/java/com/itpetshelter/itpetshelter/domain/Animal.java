@@ -22,7 +22,7 @@ public class Animal {
 
     @OneToOne
     @JoinColumn(name = "Sno")
-    private com.itpetshelter.itpetshelter.domain.Shelter shelter;
+    private Shelter shelter;
 
     @OneToOne
     @JoinColumn(name = "Mno")
@@ -30,7 +30,8 @@ public class Animal {
 
     private String Aname;
     private int Aage;
-    private String Aneutered;
-    private String Adisease;
+    private boolean Aneutered;
+    private boolean Adisease;
     private String Alocate;
+
 }
