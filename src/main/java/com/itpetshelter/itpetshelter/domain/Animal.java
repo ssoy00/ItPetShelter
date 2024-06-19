@@ -2,35 +2,38 @@ package com.itpetshelter.itpetshelter.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.mapping.ToOne;
 
 @Builder
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Table(name = "Animal", indexes = {
-        @Index(name = "idx_Animal_Type_Tno", columnList = "Type_Tno")
-})
+@Table(name = "Animal")
+//, indexes = {
+//        @Index(name = "idx_Animal_Type_Tno", columnList = "Type_Tno")
+//})
 @Entity
 public class Animal {
-    @Id
-    private int Ano;
 
-    @OneToOne
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Long Ano;
+
+    @ManyToOne
     @JoinColumn(name = "Tno")
     private Type type;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "Sno")
-    private com.itpetshelter.itpetshelter.domain.Shelter shelter;
+    private Shelter shelter;
 
-    @OneToOne
-    @JoinColumn(name = "Mno")
-    private Manager manager;
+//    @ManyToOne
+//    @JoinColumn(name = "Mno")
+//    private Manager manager;
 
     private String Aname;
-    private int Aage;
-    private String Aneutered;
-    private String Adisease;
-    private String Alocate;
+    private Long Aage;
+    private Boolean Aneutered;  //중성화
+    private Boolean Adisease;  //질병
 }

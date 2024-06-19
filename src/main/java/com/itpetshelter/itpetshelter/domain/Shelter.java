@@ -10,12 +10,14 @@ import lombok.*;
 @ToString
 @Entity
 public class Shelter {
-    @Id
-    private int Sno;
 
-    @OneToOne
-    @JoinColumn(name = "Mno")
-    private Manager manager;
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Long Sno;
+
+//
+//    @JoinColumn(name = "Mno")
+//    private Manager manager;
 
     private String Sname;
     private String Slocate;

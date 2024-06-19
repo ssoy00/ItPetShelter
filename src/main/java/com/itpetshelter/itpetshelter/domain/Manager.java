@@ -11,7 +11,13 @@ import lombok.*;
 @Entity
 public class Manager {
     @Id
-    private int Mno;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Long Mno;
+
+    @ManyToOne
+    @JoinColumn(name = "Sno")
+    private Shelter shelter;
+
     private String Mpw;
     private String Mname;
     private String Mid;

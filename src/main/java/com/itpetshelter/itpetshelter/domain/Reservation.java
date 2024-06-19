@@ -15,27 +15,29 @@ import java.time.LocalDateTime;
 })
 @Entity
 public class Reservation extends com.itpetshelter.itpetshelter.domain.BaseEntity {
+
     @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int Rno;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "Mno")
     private Manager manager;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "Ano")
-    private com.itpetshelter.itpetshelter.domain.Animal animal;
+    private Animal animal;
 
-    @OneToOne
-    @JoinColumn(name = "Uid")
-    private User user;
+//    @OneToOne
+//    @JoinColumn(name = "Uid")
+//    private User user;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "Sno")
-    private com.itpetshelter.itpetshelter.domain.Shelter shelter;
+    private Shelter shelter;
 
     private LocalDateTime Date;
     private LocalDateTime Time;
-    private String R_check;
+    private Boolean Rcheck;
 }
 

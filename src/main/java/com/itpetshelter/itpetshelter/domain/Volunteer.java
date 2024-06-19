@@ -18,17 +18,17 @@ public class Volunteer extends BaseEntity{
     @Id
     private int Vno;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "Sno")
     private Shelter shelter;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "Mno")
     private Manager manager;
 
-    @OneToOne
-    @JoinColumn(name = "Uid")
-    private User user;
+//    @OneToOne
+//    @JoinColumn(name = "Uid")
+//    private User user;
 
     private LocalDateTime Date;
     private LocalDateTime Time;
