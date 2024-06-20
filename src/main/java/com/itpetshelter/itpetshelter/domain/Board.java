@@ -2,16 +2,19 @@ package com.itpetshelter.itpetshelter.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+
 import org.hibernate.annotations.BatchSize;
 
 import java.util.HashSet;
 import java.util.Set;
+
 
 @Builder
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+
 
 @Entity
 public class Board extends BaseEntity {
@@ -68,8 +71,6 @@ public class Board extends BaseEntity {
   }
 
 }
-
-
 
 
 
