@@ -52,7 +52,6 @@
     }
     .select_date{
       width: 100%;
-      margin-bottom: 50px;
     }
 
 
@@ -65,10 +64,25 @@
 
   <h2>자원봉사 신청 양식</h2>
 
-  <form >
+  <form>
+    <div class="select_date">
+      <label class="form-label">신청일자</label>
+      <input type='date' id='currentDate'/>
+
+      <label for="vtime">예약 시간:</label>
+      <select id="vtime">
+        <option value="10:00">10:00</option>
+        <option value="11:00">11:00</option>
+        <option value="12:00">12:00</option>
+        <option value="13:00">13:00</option>
+        <option value="14:00">14:00</option>
+        <option value="15:00">15:00</option>
+        <option value="16:00">16:00</option>
+        <option value="17:00">17:00</option>
+      </select>
+    </div>
     <label for="name">아이디</label>
     <input type="text" id="name" name="name" required  placeholder="봉사신청자 아이디를 입력해주세요.">
-
 
     <label for="shelter">보호소</label>
     <select id="shelter" name="shelter" required>
@@ -81,11 +95,6 @@
       <option value="shelter5">보호소5</option>
     </select>
 
-    <div class="select_date">
-      <label class="form-label">신청일자 / 시간</label>
-      <input type='date' id='currentDate'/>
-      <input type='time' id='currentTime'/>
-    </div>
 
     <input type="submit" value="신청 제출" style="width: 50%">
   </form>
