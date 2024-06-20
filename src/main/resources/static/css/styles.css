@@ -593,6 +593,7 @@ footer ul {
   flex-wrap: wrap;
   justify-content: center;
 }
+
 }
 ul {
   list-style-type: none;
@@ -10905,7 +10906,9 @@ header.masthead .post-heading .meta a {
     display: block;
     list-style-type: none;
   }
+
   .reservation-form{
     
   }
+
 }

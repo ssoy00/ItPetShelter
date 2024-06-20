@@ -1,0 +1,86 @@
+/* Google Fonts에서 Jua 폰트를 불러오기 */
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+/* 버튼 스타일 */
+.searchBtn {
+    background-color: #007bff; /* 파란색 */
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-family: 'Jua', sans-serif;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.searchBtn:hover {
+    background-color: #0056b3; /* 어두운 파란색 */
+}
+
+.clearBtn {
+    background-color: #dc3545; /* 빨간색 */
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-family: 'Jua', sans-serif;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.clearBtn:hover {
+    background-color: #c82333; /* 어두운 빨간색 */
+}
+
+/* 카드 스타일 */
+.card {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.card-title {
+    font-family: 'Jua', sans-serif;
+}
+
+/* 테이블 스타일 */
+.table {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+/* 네비게이션 바 스타일 */
+.navbar {
+    font-family: 'Jua', sans-serif;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+/* 배지 스타일 */
+.badge {
+    border-radius: 50%;
+    font-size: 0.75rem;
+    padding: 5px 10px;
+}
+
+/* 페이징 스타일 */
+.pagination .page-link {
+    border-radius: 50%;
+    padding: 8px 16px;
+    margin: 0 5px;
+    transition: background-color 0.3s ease;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+}
+
+.pagination .page-link:hover {
+    background-color: #e9ecef;
+}
