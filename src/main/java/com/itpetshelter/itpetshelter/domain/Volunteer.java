@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 @Entity
 public class Volunteer extends BaseEntity{
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Vno;
 
     @ManyToOne
