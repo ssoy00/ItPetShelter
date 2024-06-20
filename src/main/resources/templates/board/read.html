@@ -79,17 +79,17 @@
 
                         <div class="mb-3" th:with="link = ${pageRequestDTO.getLink()}">
                             <a th:href="|@{/board/update(bno =${boardDTO.bno})}&${link}|">
-                                <button type="button" class="btn btn-primary">수정하기</button>
+                                <button type="button" class="btn btn-primary updateBtn">수정하기</button>
                             </a>
                             <a th:href="|@{/board/list}?${link}|">
-                                <button type="button" class="btn btn-danger">목록가기</button>
+                                <button type="button" class="btn btn-danger listBtn">목록가기</button>
                             </a>
                         </div>
 
                     </form>
 
                 </div>
-                <button class="btn btn-info addReplyBtn2">댓글 작성2</button>
+                <button class="btn btn-info addReplyBtn2">댓글 작성</button>
                 <!--                첨부 이미지 표시하기, 원본 이미지 -->
                 <div class="col">
                     <div class="card" th:if="${boardDTO.fileNames != null && boardDTO.fileNames.size()>0}">
