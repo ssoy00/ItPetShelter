@@ -22,31 +22,6 @@ public class AnimalRepositoryTest {
 
 
     @Test
-    public void Insert() {
-
-
-        Type type = Type.builder()
-                .Atype("고양이")
-                .build();
-
-
-
-        Animal animal = Animal.builder()
-                .Aage(1L)
-                .Adisease(true)
-                .Aneutered(true)
-                .Aname("뽀삐")
-                .build();
-
-
-        Animal result = animalRepository.save(animal);
-        Type resultType = typeRepository.save(type);
-        log.info("더미 데이터 확인 : "+result);
-        log.info("더미 데이터 확인 : "+resultType);
-    }
-
-
-    @Test
     public void testInsert() {
         //실제 디비 각자 데이터에 따라서 다름.
         // 현재 bno = 900
