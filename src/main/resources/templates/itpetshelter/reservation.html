@@ -12,12 +12,12 @@
 <div layout:fragment="content" id="reservation-form">
 <h1>방문 입양 문의</h1>
     <form th:action="@{/itpetshelter/reservations}" th:object="${reservation}" method="post">
-        <label for="date">예약 날짜:</label>
-        <input type="date" id="date" th:field="*{date}" required/>
+        <label for="rdate">예약 날짜:</label>
+        <input type="date" id="rdate" th:field="*{date}" required/>
         <br/>
 
-        <label for="time">예약 시간:</label>
-        <input type="time" id="time" th:field="*{time}" required/>
+        <label for="rtime">예약 시간:</label>
+        <input type="time" id="rtime" th:field="*{time}" required/>
         <br/>
 
         <label for="animal">동물:</label>
