@@ -10,12 +10,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Table(name = "Volunteer", indexes = {
-        @Index(name = "idx_Volunteer_Shelter_Sno", columnList = "Shelter_Sno")
-})
+@Table(name = "Volunteer")
 @Entity
 public class Volunteer extends BaseEntity{
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Vno;
 
     @ManyToOne
@@ -26,10 +25,10 @@ public class Volunteer extends BaseEntity{
     @JoinColumn(name = "Mno")
     private Manager manager;
 
-//    @OneToOne
-//    @JoinColumn(name = "Uid")
-//    private User user;
+    @ManyToOne
+    @JoinColumn(name = "Cid")
+    private Consumer consumer;
 
-    private LocalDateTime Date;
-    private LocalDateTime Time;
+    private LocalDateTime VDate;
+    private LocalDateTime VTime;
 }

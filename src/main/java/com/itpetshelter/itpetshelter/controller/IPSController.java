@@ -36,4 +36,5 @@ public class IPSController {
         model.addAttribute("shelters", shelterRepository.findAll());
     }
 
+
 }
