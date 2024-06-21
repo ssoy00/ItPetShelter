@@ -10,4 +10,5 @@ public interface AnimalService {
     List<AnimalDTO> getAllAnimals();
     AnimalDTO getAnimalById(Long id);
     AnimalDTO entityToDTO(Animal animal);
+
 }

@@ -41,5 +41,8 @@ public class AnimalServiceImpl implements AnimalService {
                 .Adisease(animal.getAdisease())
                 .Alocate(animal.getShelter().getSlocate())
                 .build();
+
+        return animalDTO;
     }
+
 }
