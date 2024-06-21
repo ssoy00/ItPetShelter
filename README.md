@@ -8,6 +8,9 @@
     남귀연
    </th>
    <th>
+     김민수
+   </th>
+   <th>
     김소영
    </th>
     <th>
@@ -20,6 +23,10 @@
   <tr>
     <td align="center">
         <img src="https://avatars.githubusercontent.com/u/114720959?v=4" width=150px alt="남귀연"> 
+        <br/>
+    </td>
+    <td align="center">
+        <img src="https://avatars.githubusercontent.com/u/164992153?v=4" width=150px alt="김민수"> 
         <br/>
     </td>
     <td align="center">
@@ -38,6 +45,9 @@
   <tr>
     <td align="center" class="귀연">
         <a href="https://github.com/earyear"><img alt="github-link" height="25" src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/></a>
+   </td>
+    <td align="center" class="민수">
+        <a href="https://github.com/KMS9637"><img alt="github-link" height="25" src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/></a>
    </td>
     <td align="center" class="소영">
         <a href="https://github.com/ssoy00"><img alt="github-link" height="25" src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/></a>

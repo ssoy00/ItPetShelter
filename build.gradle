@@ -76,6 +76,11 @@ dependencies {
             "com.querydsl:querydsl-apt:${queryDslVersion}:jakarta")
 
 
+
+    // https://mvnrepository.com/artifact/net.coobird/thumbnailator
+    // 썸네일 도구
+    implementation group: 'net.coobird', name: 'thumbnailator', version: '0.4.20'
+
 }
 
 //작업중
@@ -95,3 +100,4 @@ sourceSets {
 
 
 compileJava.dependsOn('clean')
+

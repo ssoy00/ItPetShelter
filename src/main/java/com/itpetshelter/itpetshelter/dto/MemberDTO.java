@@ -1,19 +1,16 @@
-package com.itpetshelter.itpetshelter.domain;
+package com.itpetshelter.itpetshelter.dto;
 
-import jakarta.persistence.*;
 import lombok.*;
 
 @Builder
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Entity
-public class User {
-    @Id
+public class MemberDTO {
     private String Uid;
     private String Upw;
     private String Uname;
     private String Uphone;
 }
-

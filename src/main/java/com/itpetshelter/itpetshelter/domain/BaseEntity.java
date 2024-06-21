@@ -22,6 +22,7 @@ public abstract class BaseEntity {
   private LocalDateTime regDate;
 
   // 수정시 마지막 변경일시로 업데이트 하겠다.
+
   @LastModifiedDate
   @Column(name = "moddate")
   private LocalDateTime modDate;

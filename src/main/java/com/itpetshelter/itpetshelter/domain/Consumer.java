@@ -9,12 +9,10 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @Entity
-public class Shelter {
-
+public class Consumer {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long Sno;
-
-    private String Sname;
-    private String Slocate;
+    private String Cid;
+    private String Cpw;
+    private String Cname;
+    private String Cphone;
 }

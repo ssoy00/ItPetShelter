@@ -3,34 +3,76 @@ package com.itpetshelter.itpetshelter.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDateTime;
+import org.hibernate.annotations.BatchSize;
+
+import java.util.HashSet;
+import java.util.Set;
+
 
 @Builder
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Table(name = "Board", indexes = {
-        @Index(name = "idx_Board_User_Uid", columnList = "User_Uid")
-})
+
+
 @Entity
 public class Board extends BaseEntity {
-    @Id
-    private int Bno;
 
-    @OneToOne
-    @JoinColumn(name = "Uid")
-    private User user;
 
-    private String B_Title;
+  @Id
 
-    private String B_Memo;
-    private LocalDateTime DateTime;
+  @GeneratedValue(strategy= GenerationType.IDENTITY)
+  private Long bno;
 
-    public void changeTitleAndContent(String B_Title, String B_Memo) {
-        this.B_Title = B_Title;
-        this.B_Memo = B_Memo;
-    }
+  @Column(length = 500,nullable = false)
+  private String title;
+
+  @Column(length = 2000, nullable = false)
+  private String content;
+
+  @Column(length = 50, nullable = false)
+  private String writer;
+
+  @OneToMany(mappedBy = "board",
+
+          cascade = {CascadeType.ALL},
+
+          fetch = FetchType.LAZY,
+
+          orphanRemoval = true)
+  @Builder.Default
+
+  @BatchSize(size = 20)
+  private Set<BoardImage> imageSet = new HashSet<>();
+
+  //이미지들 추가
+  public void addImage(String uuid, String fileName) {
+    BoardImage boardImage = BoardImage.builder()
+            .uuid(uuid)
+            .fileName(fileName)
+            .board(this)
+            .ord(imageSet.size())
+            .build();
+
+    imageSet.add(boardImage);
+  }
+
+  // 이미지들 삭제
+  public void clearImages(){
+
+    imageSet.forEach(boardImage -> boardImage.changeBoard(null));
+    this.imageSet.clear();
+  }
+
+  public void changeTitleAndContent(String title, String content) {
+    this.title = title;
+    this.content = content;
+  }
+
 }
+
+
+
 
 
