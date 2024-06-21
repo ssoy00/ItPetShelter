@@ -37,4 +37,15 @@ public class IPSController {
     }
 
 
+    @GetMapping("/shelter")
+    public String shelter() {
+        return "page/shelter";
+    }
+
+    @GetMapping("/volunteer")
+    public String volunteer() {
+        return "page/volunteer";
+    }
+
+
 }
