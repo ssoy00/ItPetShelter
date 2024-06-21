@@ -4,17 +4,32 @@
 //import com.itpetshelter.itpetshelter.dto.AnimalDTO;
 //import com.itpetshelter.itpetshelter.repository.AnimalRepository;
 //import org.modelmapper.ModelMapper;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Service;
 //
+//import java.util.List;
+//import java.util.stream.Collectors;
+//
+//@Service
 //public class AnimalServiceImpl implements AnimalService {
 //
-//    //의존성 주입
-//    private final AnimalRepository animalRepository;
-//    private final ModelMapper modelMapper;
+//    @Autowired
+//    private AnimalRepository animalRepository;
+//
+//    @Autowired
+//    private AnimalMapper animalMapper;
 //
 //    @Override
-//    public Long register(AnimalDTO animalDTO) {
-//        Animal animal = modelMapper.map(animalDTO, Animal.class);
+//    public List<AnimalDTO> getAllAnimals() {
+//        return animalRepository.findAll().stream()
+//                .map(animalMapper::toDTO)
+//                .collect(Collectors.toList());
+//    }
 //
-//        return 0;
+//    @Override
+//    public AnimalDTO getAnimalById(Long id) {
+//        return animalRepository.findById(id)
+//                .map(animalMapper::toDTO)
+//                .orElseThrow(() -> new RuntimeException("Animal not found"));
 //    }
 //}
