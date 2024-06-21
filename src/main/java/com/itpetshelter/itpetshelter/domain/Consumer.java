@@ -9,10 +9,10 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @Entity
-public class Member {
+public class Consumer {
     @Id
-    private String Mid;
-    private String Mpw;
-    private String Mname;
-    private String Mphone;
+    private String Cid;
+    private String Cpw;
+    private String Cname;
+    private String Cphone;
 }

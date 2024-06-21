@@ -2,7 +2,6 @@ package com.itpetshelter.itpetshelter.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.mapping.ToOne;
 
 @Builder
 @Getter
@@ -10,9 +9,6 @@ import org.hibernate.mapping.ToOne;
 @NoArgsConstructor
 @ToString
 @Table(name = "Animal")
-//, indexes = {
-//        @Index(name = "idx_Animal_Type_Tno", columnList = "Type_Tno")
-//})
 @Entity
 public class Animal {
 
@@ -28,13 +24,11 @@ public class Animal {
     @JoinColumn(name = "Sno")
     private Shelter shelter;
 
-//    @ManyToOne
-//    @JoinColumn(name = "Mno")
-//    private Manager manager;
+    @ManyToOne
+    @JoinColumn(name = "Mno")
+    private Manager manager;
 
     private String Aname;
-
-
     private Long Aage;
     private Boolean Aneutered;  //중성화
     private Boolean Adisease;  //질병
