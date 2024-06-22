@@ -48,3 +48,37 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    const items = Array.from(document.querySelectorAll('.card'));
+    const itemsPerPage = 4;
+    let currentPage = 1;
+
+    function renderItems() {
+        items.forEach((item, index) => {
+            item.style.display = (index >= (currentPage - 1) * itemsPerPage && index < currentPage * itemsPerPage) ? 'block' : 'none';
+        });
+    }
+
+    function renderPagination() {
+        const pagination = document.getElementById('pagination');
+        pagination.innerHTML = '';
+
+        const totalPages = Math.ceil(items.length / itemsPerPage);
+
+        for (let i = 1; i <= totalPages; i++) {
+            const pageLink = document.createElement('a');
+            pageLink.textContent = i;
+            pageLink.className = currentPage === i ? 'active' : '';
+            pageLink.addEventListener('click', (event) => {
+                event.preventDefault();
+                currentPage = i;
+                renderItems();
+                renderPagination();
+            });
+            pagination.appendChild(pageLink);
+        }
+    }
+
+    renderItems();
+    renderPagination();
+});
