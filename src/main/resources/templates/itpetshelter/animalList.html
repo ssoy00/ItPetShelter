@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:th="www.thymeleaf.org"
+      xmlns:th="http://www.thymeleaf.org"
       layout:decorate="~{layout/base.html}">
 <head>
     <meta charset="UTF-8">
@@ -74,27 +74,27 @@
     <div class="container">
         <h1>동물 목록</h1>
         <div id="card-list" class="card-list">
-            <div class="animalCard" th:each="animal : ${animalList}" th:onclick="'location.href=\'/itpetshelter/animalRead?id=' + ${animal.Ano} + '\'" style="cursor: pointer;">
+            <div class="animalCard" th:each="animal : ${animalList}" style="cursor: pointer;">
                 <div class="animal-info">
                     <img src="/assets/img/dogandcat.jpg" alt="동물 사진">
                     <table>
                         <tr>
                             <td>이름</td>
-                            <td th:text="${animal.Aname}">이름</td>
+                            <td th:text="${animal.aname}">이름</td>
                             <td>나이</td>
-                            <td th:text="${animal.Aage}">나이</td>
+                            <td th:text="${animal.aage}">나이</td>
                         </tr>
                         <tr>
                             <td>중성화</td>
-                            <td th:text="${animal.Aneutered ? 'Y' : 'N'}">중성화</td>
+                            <td th:text="${animal.aneutered ? 'Y' : 'N'}">중성화</td>
                             <td>질병유무</td>
-                            <td th:text="${animal.Adisease ? 'Y' : 'N'}">질병유무</td>
+                            <td th:text="${animal.adisease ? 'Y' : 'N'}">질병유무</td>
                         </tr>
                         <tr>
                             <td>보호소 위치</td>
-                            <td th:text="${animal.Alocate}">보호소 위치</td>
+                            <td th:text="${animal.alocate}">보호소 위치</td>
                             <td>보호소 이름</td>
-                            <td th:text="${animal.Atype}">보호소 이름</td>
+                            <td th:text="${animal.atype}">보호소 이름</td>
                         </tr>
                     </table>
                 </div>

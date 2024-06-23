@@ -1,15 +1,13 @@
 package com.itpetshelter.itpetshelter.repository;
 
 import com.itpetshelter.itpetshelter.domain.Animal;
-import com.itpetshelter.itpetshelter.domain.Board;
+import com.itpetshelter.itpetshelter.domain.Manager;
 import com.itpetshelter.itpetshelter.domain.Shelter;
 import com.itpetshelter.itpetshelter.domain.Type;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.stream.IntStream;
 
 @SpringBootTest
 @Log4j2
@@ -24,6 +22,9 @@ public class AnimalRepositoryTest {
     @Autowired
     ShelterRepository shelterRepository;
 
+    @Autowired
+    ManagerRepository managerRepository;
+
     @Test
     public void testInsert() {
         //실제 디비 각자 데이터에 따라서 다름.
@@ -31,7 +32,7 @@ public class AnimalRepositoryTest {
         Long tno = 1L;
 
         Type type = Type.builder()
-                .Atype("고양이")
+                .Atype("고양이3")
                 .Tno(tno)
                 .build();
 
@@ -45,13 +46,24 @@ public class AnimalRepositoryTest {
 
         shelter = shelterRepository.save(shelter);
 
+        Manager manager = Manager.builder()
+                .shelter(shelter)
+                .Mpw("test")
+                .Mname("test")
+                .Mid("test")
+                .build();
+
+        manager = managerRepository.save(manager);
+
+
         Animal animal = Animal.builder()
                 .type(type)
                 .shelter(shelter)
+                .manager(manager)
                 .Aage(3L)
                 .Adisease(true)
                 .Aneutered(true)
-                .Aname("뽀삐")
+                .Aname("뽀삐3")
                 .build();
 
 
