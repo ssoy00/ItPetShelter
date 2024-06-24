@@ -23,11 +23,18 @@ public class AnimalServiceImpl22 implements AnimalService22 {
     }
 
     @Override
-    public Animal2DTO getAnimalById(Long id) {
-        return animalRepository.findById(id)
+    public Animal2DTO read(Long ano) {
+        return animalRepository.findById(ano)
                 .map(this::entityToDTO)
                 .orElseThrow(() -> new RuntimeException("Animal not found"));
     }
+
+//    @Override
+//    public Animal2DTO getAnimalById(Long id) {
+//        return animalRepository.findById(id)
+//                .map(this::entityToDTO)
+//                .orElseThrow(() -> new RuntimeException("Animal not found"));
+//    }
 
     @Override
     public Animal2DTO entityToDTO(Animal animal) {
@@ -40,6 +47,7 @@ public class AnimalServiceImpl22 implements AnimalService22 {
                 .Aneutered(animal.getAneutered())
                 .Adisease(animal.getAdisease())
                 .Alocate(animal.getShelter().getSlocate())
+                .Alocatename(animal.getShelter().getSname())
                 .build();
     }
 

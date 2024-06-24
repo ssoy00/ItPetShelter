@@ -29,6 +29,7 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer; /* 마우스 포인터를 포인터로 변경 */
         }
 
         .animal-info {
@@ -71,7 +72,9 @@
     <div class="acontainer">
         <div th:each="animal : ${animalList2}" class="animalCard">
             <div class="animal-info">
+                <a th:href="@{/itpetshelter/animalDetail(ano=${animal.ano})}">
                 <img th:src="@{/assets/img/dogandcat.jpg}" alt="동물 사진">
+                </a>
                 <table>
                     <tr>
                         <td bgcolor="#ddd">품종</td>
@@ -102,5 +105,8 @@
         </div>
     </div>
 </div>
+
+
+
 </body>
 </html>
