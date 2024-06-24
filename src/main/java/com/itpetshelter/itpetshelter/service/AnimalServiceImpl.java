@@ -3,7 +3,6 @@ package com.itpetshelter.itpetshelter.service;
 import com.itpetshelter.itpetshelter.domain.Animal;
 import com.itpetshelter.itpetshelter.dto.AnimalDTO;
 import com.itpetshelter.itpetshelter.repository.AnimalRepository;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,14 +31,16 @@ public class AnimalServiceImpl implements AnimalService {
 
     @Override
     public AnimalDTO entityToDTO(Animal animal) {
-        AnimalDTO animalDTO = AnimalDTO.builder()
+        return AnimalDTO.builder()
                 .Ano(animal.getAno())
-                .Atype(animal.getType().getAtype())
+                .Atype(animal.getType() !=null ? animal.getType().getAtype(): null)
                 .Aname(animal.getAname())
                 .Aage(animal.getAage())
                 .Aneutered(animal.getAneutered())
                 .Adisease(animal.getAdisease())
-                .Alocate(animal.getShelter().getSlocate())
+                .Alocate(animal.getShelter() != null ? animal.getShelter().getSlocate() : null)
                 .build();
+
     }
+
 }
