@@ -28,9 +28,10 @@ public class Animal2Controller {
     }
 
     @GetMapping("/animalDetail")
-    public String getAnimalById(Long id, Model model){
-        Animal2DTO animalDTO = animalService.getAnimalById(id);
-        model.addAttribute("animal2", animalDTO);
+    public String read(Long ano, Model model){
+        Animal2DTO animalDTO = animalService.read(ano);
+
+        model.addAttribute("animal2DTO", animalDTO);
         return "itpetshelter/animalDetail";
     }
 }

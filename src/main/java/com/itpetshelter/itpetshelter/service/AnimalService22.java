@@ -9,7 +9,7 @@ import java.util.List;
 public interface AnimalService22 {
 
     List<Animal2DTO> getAllAnimals();
-    Animal2DTO getAnimalById(Long id);
+    Animal2DTO read(Long ano);
     Animal2DTO entityToDTO(Animal animal);
 
 }

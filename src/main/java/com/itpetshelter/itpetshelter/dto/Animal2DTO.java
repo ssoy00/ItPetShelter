@@ -32,7 +32,10 @@ public class Animal2DTO {
     @NotEmpty
     private String Alocate;
 
+    @NotEmpty
     private String Alocatename;
+
+//    private String AContent;
 
     //첨부 파일 이름들
     private List<String> fileNames;
