@@ -29,11 +29,10 @@ public class AnimalRepositoryTest {
     public void testInsert() {
         //실제 디비 각자 데이터에 따라서 다름.
         // 현재 bno = 900
-        Long tno = 1L;
+//        Long tno = 1L;
 
         Type type = Type.builder()
-                .Atype("고양이3")
-                .Tno(tno)
+                .Atype("야옹이")
                 .build();
 
         type = typeRepository.save(type);
@@ -63,7 +62,7 @@ public class AnimalRepositoryTest {
                 .Aage(3L)
                 .Adisease(true)
                 .Aneutered(true)
-                .Aname("뽀삐3")
+                .Aname("뽀삐2")
                 .build();
 
 
