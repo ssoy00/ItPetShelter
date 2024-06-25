@@ -13,8 +13,9 @@ import lombok.NoArgsConstructor;
 
 public class AnimalDTO {
 
-    @NotEmpty
-    private Integer Ano;
+    // NotEmpty는 String에만 사용 가능
+
+    private Long Ano;
 
     @NotEmpty
     private String Atype;
@@ -22,8 +23,8 @@ public class AnimalDTO {
     @NotEmpty
     private String Aname;
 
-    @NotEmpty
-    private Integer Aage;
+
+    private Long Aage;
 
     private Boolean Aneutered;
     private Boolean Adisease;
