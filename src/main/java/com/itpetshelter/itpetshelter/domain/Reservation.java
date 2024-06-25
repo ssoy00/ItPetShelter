@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 
 @Builder
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
@@ -16,7 +17,7 @@ public class Reservation extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int Rno;
+    private Long Rno;
 
     @ManyToOne
     @JoinColumn(name = "Mno")
@@ -36,8 +37,6 @@ public class Reservation extends BaseEntity {
 
     private LocalDateTime RDate;
     private LocalDateTime RTime;
-
-    private Boolean Rcheck;
 
 }
 
