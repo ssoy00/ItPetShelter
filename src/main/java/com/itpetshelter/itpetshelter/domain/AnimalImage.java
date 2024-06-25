@@ -18,8 +18,6 @@ public class AnimalImage implements Comparable<AnimalImage>{
     private String AfileName;
     private int ord; //사진 올린 순번
 
-    private String AContent; //동물 소개 설명글
-
     @ManyToOne
     private Animal animal;
 

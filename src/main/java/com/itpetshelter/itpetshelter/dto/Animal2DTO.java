@@ -23,6 +23,8 @@ public class Animal2DTO {
     @NotEmpty
     private String Aname;
 
+    private String Acontent; //동물 설명글
+
     private Long Aage;
 
     private Boolean Agender;
@@ -30,12 +32,11 @@ public class Animal2DTO {
     private Boolean Adisease;
 
     @NotEmpty
-    private String Alocate;
+    private String Alocate; //위치
 
     @NotEmpty
-    private String Alocatename;
+    private String Alocatename; //보호소이름
 
-//    private String AContent;
 
     //첨부 파일 이름들
     private List<String> ImageFileNames;

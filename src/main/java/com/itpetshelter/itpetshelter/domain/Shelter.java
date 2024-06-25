@@ -15,6 +15,6 @@ public class Shelter {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long Sno;
 
-    private String Sname;
-    private String Slocate;
+    private String sname;
+    private String slocate;
 }

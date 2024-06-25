@@ -22,7 +22,7 @@ public class Animal {
 
     @ManyToOne
     @JoinColumn(name = "Tno")
-    private Type Atype;
+    private Type type;
 
     @ManyToOne
     @JoinColumn(name = "Sno")
@@ -37,6 +37,10 @@ public class Animal {
     private Boolean Agender;   //성별
     private Boolean Aneutered; //중성화
     private Boolean Adisease;  //질병
+
+    private String Acontent; //동물 소개 설명글
+
+
 
 
     //========================이미지 처리
