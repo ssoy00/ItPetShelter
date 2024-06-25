@@ -32,4 +32,6 @@ public class Volunteer extends BaseEntity{
 
     private LocalDateTime VDate;
     private LocalDateTime VTime;
+
+
 }

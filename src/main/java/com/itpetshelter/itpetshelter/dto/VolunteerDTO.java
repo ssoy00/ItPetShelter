@@ -13,12 +13,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 
-
 public class VolunteerDTO {
     private Long Vno;
     private Long Sno;
     private Long Mno;
-    private Long Cid;
+    private String Cid;
     private LocalDateTime VDate;
     private LocalDateTime VTime;
 

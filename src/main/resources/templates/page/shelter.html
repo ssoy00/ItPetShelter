@@ -32,7 +32,7 @@
 <div layout:fragment="content" style="width:100%;height:100%;padding:3%;">
 
     <div class = list_box>
-    <div th:each="shelter:${snamelist}" class="lo_list" >
+    <div th:each="shelter:${shelterlist}" class="lo_list" >
         <button th:text="${shelter.sname}"></button>
     </div>
     </div>
