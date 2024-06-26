@@ -13,6 +13,8 @@ import java.util.List;
 @Repository
 public interface AnimalRepository extends JpaRepository<Animal, Long> {
 //    @Query("select a from Animal where a.") 쿼리문 자동으로 만들어줌..
-    @Query("SELECT a FROM Animal a WHERE a.type.Atype LIKE %:keyword%")
+    @Query("SELECT a FROM Animal a WHERE a.type.type LIKE %:keyword%")
 List<Animal> findByTypeKeyword(@Param("keyword") String Keyword);
+
+
 }
