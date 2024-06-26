@@ -1,1 +1,18 @@
-테스트
+
+manager / shelter 더미 데이터값
+
+select * from shelter;
+   select * from manager;
+
+   INSERT INTO manager (mno, mid, mname, mpw) VALUES
+                                                  (1, 'user1', 'John Doe', 'password123'),
+                                                  (2, 'user2', 'Jane Smith', 'securepass456'),
+                                                  (3, 'user3', 'Mike Johnson', 'qwerty789'),
+                                                  (4, 'user4', 'Emily Davis', 'abc12345'),
+                                                  (5, 'user5', 'David Brown', 'passw0rd!');
+
+
+   INSERT INTO shelter (sno, mno, slocate, sname) VALUES
+                                                  (1, 1, 'test1', 'test1'),
+                                                  (2, 2, 'test2', 'test2'),
+                                                  (3, 3, 'test3', 'test3');

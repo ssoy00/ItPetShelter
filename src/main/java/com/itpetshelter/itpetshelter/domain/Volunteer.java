@@ -13,9 +13,10 @@ import java.time.LocalDateTime;
 @Table(name = "Volunteer")
 @Entity
 public class Volunteer extends BaseEntity{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Vno;
+    private Long Vno;
 
     @ManyToOne
     @JoinColumn(name = "Sno")
@@ -31,4 +32,6 @@ public class Volunteer extends BaseEntity{
 
     private LocalDateTime VDate;
     private LocalDateTime VTime;
+
+
 }

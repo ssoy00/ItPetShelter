@@ -17,4 +17,5 @@ public class Shelter {
 
     private String sname;
     private String slocate;
+
 }
