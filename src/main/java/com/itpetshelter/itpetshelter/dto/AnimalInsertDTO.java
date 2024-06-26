@@ -6,13 +6,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class AnimalDTO {
 
-    // NotEmpty는 String에만 사용 가능
+public class AnimalInsertDTO {
 
     private Long Ano;
 
@@ -24,10 +25,19 @@ public class AnimalDTO {
 
 
     private Long Aage;
-
+    private Boolean Agender;
     private Boolean Aneutered;
     private Boolean Adisease;
 
     @NotEmpty
     private String Alocate;
+
+    @NotEmpty
+    private String Alocatename;
+
+    //동물 상세 내용
+    private String AContent;
+
+    //첨부 파일 이름들
+    private List<String> fileNames;
 }

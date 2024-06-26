@@ -15,10 +15,7 @@ public class Shelter {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long Sno;
 
-    @ManyToOne
-    @JoinColumn(name = "Mno")
-    private Manager manager;
+    private String sname;
+    private String slocate;
 
-    private String Sname;
-    private String Slocate;
 }

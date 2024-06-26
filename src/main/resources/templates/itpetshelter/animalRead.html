@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Detail</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="container">
+    <h1 th:text="${animal.aname}">Animal Name</h1>
+    <p>Age: <span th:text="${animal.aage}">Age</span></p>
+    <p>Neutered: <span th:text="${animal.aneutered ? 'Yes' : 'No'}">Neutered</span></p>
+    <p>Disease: <span th:text="${animal.adisease ? 'Yes' : 'No'}">Disease</span></p>
+    <p>Type: <span th:text="${animal.type.typeName}">Type</span></p>
+    <p>Shelter: <span th:text="${animal.shelter.sname}">Shelter</span></p>
+    <p>Manager: <span th:text="${animal.manager.mname}">Manager</span></p>
+    <a href="/itpetshelter/animalList">Back to list</a>
+</div>
+</body>
+</html>

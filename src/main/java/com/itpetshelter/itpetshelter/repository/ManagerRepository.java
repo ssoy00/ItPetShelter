@@ -1,12 +1,12 @@
 package com.itpetshelter.itpetshelter.repository;
 
-import com.itpetshelter.itpetshelter.domain.Type;
+import com.itpetshelter.itpetshelter.domain.Manager;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.Optional;
+import org.springframework.stereotype.Repository;
 
 //JpaRepository<엔터티클래스명(T), PK 타입(ID)> 은 기본적인 쿼리 메소드 만들어줌 CRUD
-public interface TypeRepository extends JpaRepository<Type, Long> {
+// 레포지토리 어노테이션 추가
+@Repository
+public interface ManagerRepository extends JpaRepository<Manager, Long> {
 //    @Query("select a from Animal where a.") 쿼리문 자동으로 만들어줌..
-    Optional<Type> findByType(String type);
 }
