@@ -8,7 +8,7 @@ import com.itpetshelter.itpetshelter.dto.ReservationDTO;
 import com.itpetshelter.itpetshelter.repository.AnimalRepository;
 import com.itpetshelter.itpetshelter.repository.ReservationRepository;
 import com.itpetshelter.itpetshelter.repository.ShelterRepository;
-import com.itpetshelter.itpetshelter.service.AnimalService;
+
 import com.itpetshelter.itpetshelter.service.ReservationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
