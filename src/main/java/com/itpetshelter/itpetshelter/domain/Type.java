@@ -14,5 +14,5 @@ public class Type {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Tno;
 
-    private String Atype;
+    private String type;
 }
