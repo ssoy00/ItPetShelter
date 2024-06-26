@@ -587,12 +587,12 @@ progress {
   list-style: none;
 }
 @media screen and (max-width: 768px){
-footer ul {
-  padding: 8px 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+  footer ul {
+    padding: 8px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
 }
 ul {
