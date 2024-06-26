@@ -3,6 +3,7 @@ package com.itpetshelter.itpetshelter.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Builder
@@ -35,8 +36,7 @@ public class Reservation extends BaseEntity {
     @JoinColumn(name = "Sno")
     private Shelter shelter;
 
-    private LocalDateTime RDate;
-    private LocalDateTime RTime;
+    private LocalDate Rdate;
+    private String Rtime;
 
 }
-

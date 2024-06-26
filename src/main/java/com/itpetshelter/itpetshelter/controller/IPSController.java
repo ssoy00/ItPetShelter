@@ -13,11 +13,13 @@ import com.itpetshelter.itpetshelter.service.ReservationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Controller
@@ -43,34 +45,27 @@ public class IPSController {
     }
 
     @PostMapping("/reservation")
-    public String submitReservation(@ModelAttribute("reservation") Reservation reservation, RedirectAttributes redirectAttributes) {
-        if (reservation.getAnimal() == null) {
-            reservation.setAnimal(new Animal());
-        }
-        if (reservation.getShelter() == null) {
-            reservation.setShelter(new Shelter());
-        }
+//    public String submitReservation(@ModelAttribute("reservation") Reservation reservation, RedirectAttributes redirectAttributes) {
+    public String submitReservation(ReservationDTO reservationDTO, RedirectAttributes redirectAttributes) {
+        log.info("reservationDTO: " + reservationDTO);
+        Reservation reservation = reservationService.saveReservation2(reservationDTO);
+        log.info("IPSController 반환 후, 결과 확인 : " + reservation);
 
-        reservationService.saveReservation(reservation);
-
-        redirectAttributes.addAttribute("RDate", reservation.getRDate());
-        redirectAttributes.addAttribute("RTime", reservation.getRTime());
+        redirectAttributes.addAttribute("Rdate", reservation.getRdate());
+        redirectAttributes.addAttribute("Rtime", reservation.getRtime());
         redirectAttributes.addAttribute("ano", reservation.getAnimal().getAno());
         redirectAttributes.addAttribute("sno", reservation.getShelter().getSno());
-        return "redirect:/itpetshelter/reservation_success";
+
+        return "itpetshelter/reservation_success";
     }
 
     @GetMapping("/reservation_success")
-    public String showReservationSuccess(@RequestParam("RDate") String RDate,
-                                         @RequestParam("RTime") String RTime,
-                                         @RequestParam("ano") Long ano,
-                                         @RequestParam("sno") Long sno, Model model) {
-        Reservation reservation = new Reservation();
-        reservation.setRDate(LocalDateTime.parse(RDate));
-        reservation.setRTime(LocalDateTime.parse(RTime));
-        reservation.setAnimal(animalRepository.findById(ano).orElse(null));
-        reservation.setShelter(shelterRepository.findById(Math.toIntExact(sno)).orElse(null));
-        model.addAttribute("reservation", reservation);
+    public String showReservationSuccess(@RequestParam("Rdate") LocalDateTime Rdate, @RequestParam("Rtime") String Rtime,
+                                         @RequestParam("ano") Long ano, @RequestParam("sno") Long sno, Model model) {
+        model.addAttribute("Rdate", Rdate);
+        model.addAttribute("Rtime", Rtime);
+        model.addAttribute("ano", ano);
+        model.addAttribute("sno", sno);
         return "itpetshelter/reservation_success";
     }
 

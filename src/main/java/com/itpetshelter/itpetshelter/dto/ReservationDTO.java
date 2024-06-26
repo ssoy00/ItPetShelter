@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -15,18 +16,19 @@ import java.time.LocalDateTime;
 
 public class ReservationDTO {
 
-    private Long rno;
+    private Long Rno;
 
-    private Long mno;
+    private Long Mno;
 
-    private Long ano;
+    private Long Ano;
 
-    private Long cno;
+    private String Cid;
 
-    private Long sno;
+    private Long Sno;
 
-    private LocalDateTime rdate;
-    private LocalDateTime rtime;
+    private LocalDateTime Rdate;
+    private LocalDate Rdate2;
+    private String Rtime;
 
     private LocalDateTime regDate;
     private LocalDateTime modDate;
