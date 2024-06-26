@@ -13,7 +13,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 import java.util.List;
 
@@ -26,8 +28,13 @@ public class Animal2Controller {
     private AnimalService22 animalService;
 
     @GetMapping("/animalList22")
-    public String getAllAnimals(Model model) {
-        List<Animal2DTO> animalList2 = animalService.getAllAnimals();
+    public String getAllAnimals(@RequestParam(value = "keyword", required = false) String keyword, Model model) {
+        List<Animal2DTO> animalList2;
+        if (keyword != null && !keyword.isEmpty()) {
+            animalList2 = animalService.searchAnimals(keyword);
+        } else {
+            animalList2 = animalService.getAllAnimals();
+        }
         model.addAttribute("animalList2", animalList2);
         return "itpetshelter/animalList22";
     }

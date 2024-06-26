@@ -66,7 +66,10 @@
 <body>
 <div layout:fragment="content">
     <div class ="ahead">
-
+        <form th:action="@{/itpetshelter/animalList22}" method="get">
+            <input type="text" name="keyword" placeholder="검색어 입력">
+            <button type="submit">검색</button>
+        </form>
     </div>
 
     <div class="acontainer">

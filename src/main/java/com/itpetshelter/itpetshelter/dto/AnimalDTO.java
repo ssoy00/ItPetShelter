@@ -7,10 +7,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Builder
 public class AnimalDTO {
 
     // NotEmpty는 String에만 사용 가능

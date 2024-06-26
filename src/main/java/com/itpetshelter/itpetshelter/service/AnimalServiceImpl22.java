@@ -130,5 +130,14 @@ public class AnimalServiceImpl22 implements AnimalService22 {
         return animal;
     }
 
+    @Override
+    public List<Animal2DTO> searchAnimals(String keyword) {
+        List<Animal> animals = animalRepository.findByTypeKeyword(keyword);
+        return animals.stream()
+                .map(this::entityToDTO)
+                .collect(Collectors.toList());
+    }
 
 }
+
+
