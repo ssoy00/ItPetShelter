@@ -16,8 +16,6 @@ public class ReplyServiceTests {
     @Test
     public void testInsert() {
 
-
-
         // 작성할 더미 댓글 필요함.
         ReplyDTO replyDTO = ReplyDTO.builder()
                 .bno(2L)
