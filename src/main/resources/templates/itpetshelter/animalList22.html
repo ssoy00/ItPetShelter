@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ko"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/base.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>동물 페이지</title>
+
+    <style>
+        body {
+            /*font-family: Arial, sans-serif;*/
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .acontainer {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .animalCard {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer; /* 마우스 포인터를 포인터로 변경 */
+        }
+
+        .animal-info {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .animal-info img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+
+        table td, table th {
+            padding: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        /*table th {*/
+        /*    background-color: #d63384;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class ="ahead">
+        <form th:action="@{/itpetshelter/animalList22}" method="get">
+            <input type="text" name="keyword" placeholder="검색어 입력">
+            <button type="submit">검색</button>
+        </form>
+    </div>
+
+    <div class="acontainer">
+        <div th:each="animal : ${animalList2}" class="animalCard">
+            <div class="animal-info">
+                <a th:href="@{/itpetshelter/animalDetail(ano=${animal.ano})}">
+                <img th:src="@{/assets/img/dogandcat.jpg}" alt="동물 사진">
+                </a>
+                <table>
+                    <tr>
+                        <td bgcolor="#ddd">품종</td>
+                        <td th:text="${animal.atype}"></td>
+                        <td bgcolor="#ddd">이름</td>
+                        <td th:text="${animal.aname}"></td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#ddd">나이</td>
+                        <td th:text="${animal.aage}"></td>
+                        <td bgcolor="#ddd">성별</td>
+                        <td th:text="${animal.adisease ? '수컷' : '암컷'}"></td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#ddd">질병유무</td>
+                        <td th:text="${animal.adisease ? 'Y' : 'N'}"></td>
+                        <td bgcolor="#ddd">중성화</td>
+                        <td th:text="${animal.aneutered ? 'Y' : 'N'}"></td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#ddd">보호소 위치</td>
+                        <td th:text="${animal.alocate}"></td>
+                        <td bgcolor="#ddd">보호소 이름</td>
+                        <td th:text="${animal.alocatename}"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
