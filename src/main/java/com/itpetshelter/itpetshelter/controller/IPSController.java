@@ -55,13 +55,12 @@ public class IPSController {
     }
 
     @GetMapping("/reservation_success")
-    public String showReservationSuccess(@RequestParam("Rdate") LocalDate Rdate, @RequestParam("Rtime") String Rtime,
+    public void showReservationSuccess(@RequestParam("Rdate") LocalDate Rdate, @RequestParam("Rtime") String Rtime,
                                          @RequestParam("Aname") String  Aname, @RequestParam("Sname") String Sname, Model model) {
         model.addAttribute("Rdate", Rdate);
         model.addAttribute("Rtime", Rtime);
         model.addAttribute("Aname", Aname);
         model.addAttribute("Sname", Sname);
-        return "itpetshelter/reservation_success";
     }
 
     @GetMapping("/shelter")

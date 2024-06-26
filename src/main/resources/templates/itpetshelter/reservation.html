@@ -84,7 +84,7 @@
         </div>
             <label for="animal">아이 이름 :</label>
         <select id="animal" name="Aname">
-            <option th:each="animal : ${animals}" th:value="${animal.aname}" th:text="${animal.aname}" name="Aname">아이 이름</option>
+            <option th:each="animal : ${animals}" th:value="${animal.aname}" th:text="${animal.aname}">아이 이름</option>
 <!--            <option value=1>1</option>-->
 <!--            <option value=2>2</option>-->
 <!--            <option value=3>3</option>-->
@@ -93,7 +93,7 @@
 
         <label for="shelter">보호소 :</label>
         <select id="shelter" name="Sname">
-            <option th:each="shelter : ${shelters}" th:value="${shelter.sname}" th:text="${shelter.sname}" name="Sname">보호소 위치</option>
+            <option th:each="shelter : ${shelters}" th:value="${shelter.sname}" th:text="${shelter.sname}">보호소 위치</option>
 <!--            <option value=1>1</option>-->
 <!--            <option value=2>2</option>-->
 <!--            <option value=3>3</option>-->
