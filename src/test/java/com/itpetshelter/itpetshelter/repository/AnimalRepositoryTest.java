@@ -1,9 +1,6 @@
 package com.itpetshelter.itpetshelter.repository;
 
-import com.itpetshelter.itpetshelter.domain.Animal;
-import com.itpetshelter.itpetshelter.domain.Board;
-import com.itpetshelter.itpetshelter.domain.Shelter;
-import com.itpetshelter.itpetshelter.domain.Type;
+import com.itpetshelter.itpetshelter.domain.*;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,14 +48,18 @@ public class AnimalRepositoryTest {
                 .Aage(3L)
                 .Adisease(true)
                 .Aneutered(true)
-                .Aname("뽀삐")
+                .Aname("뽀삐2")
                 .build();
-
-
 
         Animal result = animalRepository.save(animal);
 
 
+        Reservation  reservation = Reservation.builder()
+                .animal(result)
+
+
+                .Rcheck(true)
+                .build();
 
 
         log.info("더미 데이터 확인 : "+result);
