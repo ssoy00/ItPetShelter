@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ko"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/base.html}" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>동물 상세 정보 입력</title>
+
+    <style>
+        /* Reset 기본 스타일 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        .icontainer {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        select {
+            appearance: none; /* 기본 스타일 제거 (크로스 브라우징) */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+    </style>
+</head>
+<body>
+<div layout:fragment="content">
+<div class="icontainer">
+    <h1>동물 상세 정보 입력</h1>
+    <form action="/itpetshelter/animalInsert" method="post"> <!-- 저장을 위한 POST 요청 -->
+        <div class="form-group">
+            <label for="atype">품종:</label>
+            <input type="text" id="atype" name="atype" required>
+        </div>
+        <div class="form-group">
+            <label for="aname">이름:</label>
+            <input type="text" id="aname" name="aname" required>
+        </div>
+        <div class="form-group">
+            <label for="aage">나이:</label>
+            <input type="number" id="aage" name="aage" required>
+        </div>
+        <div class="form-group">
+            <label for="agender">성별:</label>
+            <select id="agender" name="agender" required>
+                <option value="true">수컷</option>
+                <option value="false">암컷</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="adisease">질병 유무:</label>
+            <select id="adisease" name="adisease" required>
+                <option value="true">있음</option>
+                <option value="false">없음</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="aneutered">중성화 여부:</label>
+            <select id="aneutered" name="aneutered" required>
+                <option value="true">중성화됨</option>
+                <option value="false">중성화 안 됨</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="alocate">보호소 위치:</label>
+            <input type="text" id="alocate" name="alocate" required>
+        </div>
+        <div class="form-group">
+            <label for="alocatename">보호소 이름:</label>
+            <input type="text" id="alocatename" name="alocatename" required>
+        </div>
+        <div class="form-group">
+            <label for="acontent">동물 설명:</label>
+            <textarea id="acontent" name="acontent" rows="5" required></textarea>
+        </div>
+<!--        <div class="form-group">-->
+<!--            <span class="input-group-text">첨부파일</span>-->
+<!--            <div class="uploadHidden">-->
+<!--                <button type="button" class="btn btn-primary uploadFileBtn">파일추가</button>-->
+<!--            </div>-->
+<!--        </div>-->
+
+        <button type="submit">저장</button>
+
+
+
+    </form>
+</div>
+</div>
+</body>
+</html>

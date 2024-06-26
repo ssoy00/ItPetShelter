@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Animal2DTO {
+public class AnimalInsertDTO {
 
     private Long Ano;
 
@@ -23,21 +23,21 @@ public class Animal2DTO {
     @NotEmpty
     private String Aname;
 
-    private String Acontent; //동물 설명글
 
     private Long Aage;
-
     private Boolean Agender;
     private Boolean Aneutered;
     private Boolean Adisease;
 
     @NotEmpty
-    private String Alocate; //위치
+    private String Alocate;
 
     @NotEmpty
-    private String Alocatename; //보호소이름
+    private String Alocatename;
 
+    //동물 상세 내용
+    private String AContent;
 
     //첨부 파일 이름들
-    private List<String> ImageFileNames;
+    private List<String> fileNames;
 }

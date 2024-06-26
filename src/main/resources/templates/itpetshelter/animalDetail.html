@@ -95,7 +95,7 @@
                     <td>나이</td>
                     <td th:text="${animal2DTO.aage}"></td>
                     <td>성별</td>
-                    <td th:text="${animal2DTO.agender}"></td>
+                    <td th:text="${animal2DTO.agender ? '수컷' : '암컷'}"></td>
                 </tr>
                 <tr>
                     <td>질병유무</td>
@@ -117,9 +117,13 @@
             <img th:src="@{/assets/img/dogandcat.jpg}" alt="추가 사진 1">
             <img th:src="@{/assets/img/dogandcat.jpg}" alt="추가 사진 2">
             <h2>설명</h2>
-            <p th:text="${animal2DTO.alocatename}">
+            <p th:text="${animal2DTO.acontent}">
 <!--                이곳에 동물에 대한 추가 설명이 들어갑니다. 동물의 성격, 특별한 필요 사항, 또는 입양에 관련된 정보를 여기에 작성할 수 있습니다.-->
             </p>
+        </div>
+
+        <div class="reservation2">
+            <a th:href ="@{/itpetshelter/reservation(ano=${animal2DTO.ano})}">예약하기</a>
         </div>
     </div>
 </div>
