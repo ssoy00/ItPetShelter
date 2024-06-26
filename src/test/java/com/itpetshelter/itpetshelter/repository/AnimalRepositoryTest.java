@@ -2,6 +2,7 @@ package com.itpetshelter.itpetshelter.repository;
 
 import com.itpetshelter.itpetshelter.domain.Animal;
 import com.itpetshelter.itpetshelter.domain.Board;
+import com.itpetshelter.itpetshelter.domain.Shelter;
 import com.itpetshelter.itpetshelter.domain.Type;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
@@ -20,31 +21,8 @@ public class AnimalRepositoryTest {
     @Autowired
     TypeRepository typeRepository;
 
-
-    @Test
-    public void Insert() {
-
-
-        Type type = Type.builder()
-                .Atype("고양이")
-                .build();
-
-
-
-        Animal animal = Animal.builder()
-                .Aage(1L)
-                .Adisease(true)
-                .Aneutered(true)
-                .Aname("뽀삐")
-                .build();
-
-
-        Animal result = animalRepository.save(animal);
-        Type resultType = typeRepository.save(type);
-        log.info("더미 데이터 확인 : "+result);
-        log.info("더미 데이터 확인 : "+resultType);
-    }
-
+    @Autowired
+    ShelterRepository shelterRepository;
 
     @Test
     public void testInsert() {
@@ -59,9 +37,18 @@ public class AnimalRepositoryTest {
 
         type = typeRepository.save(type);
 
+        Shelter shelter = Shelter.builder()
+                .Slocate("test")
+                .Sname("test")
+                .build();
+
+
+        shelter = shelterRepository.save(shelter);
+
         Animal animal = Animal.builder()
                 .type(type)
-                .Aage(1L)
+                .shelter(shelter)
+                .Aage(3L)
                 .Adisease(true)
                 .Aneutered(true)
                 .Aname("뽀삐")
@@ -70,6 +57,10 @@ public class AnimalRepositoryTest {
 
 
         Animal result = animalRepository.save(animal);
+
+
+
+
         log.info("더미 데이터 확인 : "+result);
     } //
 }

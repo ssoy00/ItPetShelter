@@ -36,4 +36,16 @@ public class IPSController {
         model.addAttribute("shelters", shelterRepository.findAll());
     }
 
+
+    @GetMapping("/shelter")
+    public String shelter() {
+        return "page/shelter";
+    }
+
+    @GetMapping("/volunteer")
+    public String volunteer() {
+        return "page/volunteer";
+    }
+
+
 }
